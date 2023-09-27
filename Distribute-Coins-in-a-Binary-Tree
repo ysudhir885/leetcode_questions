@@ -1,0 +1,19 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def solve(self, root):
+        if root==None:
+            return 0
+        x=self.solve(root.left)
+        y=self.solve(root.right)
+        z=x+y+root.val-1
+        self.steps+=abs(x)+abs(y)
+        return z
+    def distributeCoins(self, root: Optional[TreeNode]) -> int:
+        self.steps=0
+        self.solve(root)
+        return self.steps
