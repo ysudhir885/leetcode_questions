@@ -1,0 +1,21 @@
+def solve(self, nums, ans, index):
+    if index==len(nums):
+        ans.append(nums)
+        return
+    for i in range(len(nums)):
+        nums=list(nums)
+        nums[index], nums[i]=nums[i], nums[index]
+        nums="".join(nums)
+
+        self.solve(nums, ans, index+1)
+        
+        nums=list(nums)
+        nums[index], nums[i]=nums[i], nums[index]
+        nums="".join(nums)
+
+            
+def permute(self, nums: List[int]) -> List[List[int]]:
+    ans=[]
+    index=0
+    self.solve(nums, ans, index)
+    return ans
