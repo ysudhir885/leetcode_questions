@@ -1,0 +1,24 @@
+def solve(self, digits, out, index, ans, mapping):
+        if index>=len(digits):
+            ans.append(out)
+            return
+        
+        num=int(digits[index])
+        val=mapping[num]
+
+        for i in range(len(val)):
+            out+=val[i]
+            self.solve(digits, out, index+1, ans, mapping)
+            out=out[:-1]
+
+
+  def letterCombinations(self, digits: str) -> List[str]:
+      if len(digits)==0:
+          return []
+      ans=[]
+      out=""
+      index=0
+      mapping=["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
+      self.solve(digits, out, index, ans, mapping)
+      return ans
+        
